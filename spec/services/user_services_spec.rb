@@ -42,14 +42,14 @@ RSpec.describe UserServices do
 
   describe '#get_users_top_rated_snacks' do
     it 'returns a given amount of users top rated snacks default 5' do
-      stub_body = File.open('spec/fixtures/users_snacks.json')
+      stub_body = File.open('spec/fixtures/top_rated_users_snacks.json')
 
-      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/users_top_rated_snacks")
-         .to_return(status: 200, body: stub_body, headers: {})
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/:user_id/snacks/users_top_rated_snacks?limit=5")
+        .to_return(status: 200, body: stub_body, headers: {})
 
       top_rated_snacks = UserServices.get_users_top_rated_snacks(1)
 
-      expect(top_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Funyuns')
+      expect(top_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
     end
   end
 end

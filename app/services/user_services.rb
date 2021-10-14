@@ -17,6 +17,14 @@ class UserServices
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.get_users_top_rated_snacks(user_id, limit = 5)
+    response = conn.get("/api/v1/users/:user_id/snacks/users_top_rated_snacks") do |req|
+      req.params['limit'] = limit
+    end
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def self.conn
     Faraday.new(url: 'https://lit-reaches-91268.herokuapp.com/')
   end
