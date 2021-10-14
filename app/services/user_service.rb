@@ -1,4 +1,4 @@
-class UserServices
+class UserService
   def self.get_all_users
     response = conn.get('/api/v1/users')
 

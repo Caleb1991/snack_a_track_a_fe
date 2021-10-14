@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserServices do
+RSpec.describe UserService do
   describe '#get_all_users' do
     it 'gets all users' do
       stub_body = File.open('spec/fixtures/all_users.json')
@@ -8,7 +8,7 @@ RSpec.describe UserServices do
       stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
          .to_return(status: 200, body: stub_body, headers: {})
 
-      all_users = UserServices.get_all_users
+      all_users = UserService.get_all_users
 
       expect(all_users[:data][:attributes][:users][0][:first_name]).to eq('Roald')
     end
@@ -21,7 +21,7 @@ RSpec.describe UserServices do
       stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1")
          .to_return(status: 200, body: stub_body, headers: {})
 
-      single_user = UserServices.get_single_user(1)
+      single_user = UserService.get_single_user(1)
 
       expect(single_user[:data][:attributes][:first_name]).to eq('Roald')
     end
@@ -34,7 +34,7 @@ RSpec.describe UserServices do
       stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks")
          .to_return(status: 200, body: stub_body, headers: {})
 
-      snacks = UserServices.get_users_snacks(1)
+      snacks = UserService.get_users_snacks(1)
 
       expect(snacks[:data][:attributes][:snacks][0][:name]).to eq('Funyuns')
     end
@@ -47,7 +47,7 @@ RSpec.describe UserServices do
       stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/users_top_rated_snacks?limit=5")
         .to_return(status: 200, body: stub_body, headers: {})
 
-      top_rated_snacks = UserServices.get_users_top_rated_snacks(1)
+      top_rated_snacks = UserService.get_users_top_rated_snacks(1)
 
       expect(top_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
     end
@@ -60,7 +60,7 @@ RSpec.describe UserServices do
       stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/snack_recommendations")
         .to_return(status: 200, body: stub_body, headers: {})
 
-      snack_recs = UserServices.get_user_snack_recommendations(1)
+      snack_recs = UserService.get_user_snack_recommendations(1)
 
       expect(snack_recs[:data][:attributes][:snacks][0][:name]).to eq('Broccoli')
     end
