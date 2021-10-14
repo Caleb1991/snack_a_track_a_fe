@@ -102,9 +102,12 @@ RSpec.describe SnackService do
     end
   end
 
-  describe '#snacks_reviews' do
+  describe '#get_single_snacks_reviews' do
     it 'returns all reviews for a given snack' do
       stub_body = File.open('spec/fixtures/single_snacks_reviews.json')
+
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks/1/reviews")
+        .to_return(status: 200, body: stub_body, headers: {})
 
       reviews = SnackService.get_single_snacks_reviews(1)
 
