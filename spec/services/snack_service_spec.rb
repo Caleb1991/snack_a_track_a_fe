@@ -101,4 +101,14 @@ RSpec.describe SnackService do
       expect(top_rated_sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Honey Bun')
     end
   end
+
+  describe '#snacks_reviews' do
+    it 'returns all reviews for a given snack' do
+      stub_body = File.open('spec/fixtures/single_snacks_reviews.json')
+
+      reviews = SnackService.get_single_snacks_reviews(1)
+
+      expect(reviews[:data][:attributes][:reviews][0][:rating]).to eq(4.6)
+    end
+  end
 end

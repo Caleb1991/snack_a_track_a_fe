@@ -1,0 +1,37 @@
+{
+    "data": {
+        "id": null,
+        "type": "Reviews",
+        "attributes": {
+            "reviews": [
+                {
+                    "id": 1,
+                    "description": "What a fun way to eat onions, I couldnt believe it when they said they were raw",
+                    "rating": 4.6,
+                    "likes": true,
+                    "users_snack_id": 1,
+                    "created_at": "2021-10-14T02:57:59.933Z",
+                    "updated_at": "2021-10-14T02:57:59.933Z"
+                },
+                {
+                    "id": 10,
+                    "description": "Amazing",
+                    "rating": 0.8,
+                    "likes": false,
+                    "users_snack_id": 10,
+                    "created_at": "2021-10-14T02:57:59.991Z",
+                    "updated_at": "2021-10-14T02:57:59.991Z"
+                },
+                {
+                    "id": 13,
+                    "description": "Amazing",
+                    "rating": 2.9,
+                    "likes": true,
+                    "users_snack_id": 13,
+                    "created_at": "2021-10-14T02:58:00.005Z",
+                    "updated_at": "2021-10-14T02:58:00.005Z"
+                }
+            ]
+        }
+    }
+}
