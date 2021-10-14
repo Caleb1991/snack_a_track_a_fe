@@ -26,4 +26,22 @@ RSpec.describe SnackService do
       expect(snack[:data][:attributes][:name]).to eq('Funyuns')
     end
   end
+
+  describe '#get_all_savory_or_sweet_snacks' do
+    it 'returns all savory snacks' do
+      stub_body = File.open('spec/fixtures/savory_snacks.json')
+
+      savory_snacks = SnackService.get_all_savory_or_sweet_snacks('savory')
+
+      expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Funyuns')
+    end
+
+    it 'returns all sweet snacks' do
+      stub_body = File.open('spec/fixtures/sweet_snacks.json')
+
+      savory_snacks = SnackService.get_all_savory_or_sweet_snacks('sweet')
+
+      expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Star Crunch')
+    end
+  end
 end
