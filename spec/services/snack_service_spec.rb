@@ -50,4 +50,14 @@ RSpec.describe SnackService do
       expect(sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Star Crunch')
     end
   end
+
+  describe '#average_rating' do
+    it 'returns the average rating for a given snack' do
+      stub_body = File.open('spec/fixtures/average_rating_for_snack.json')
+
+      average_rating = SnackService.average_rating(1)
+
+      expect(average_rating[:data][:attributes][:average_rating]).to eq(2.76)
+    end
+  end
 end
