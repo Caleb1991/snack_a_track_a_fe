@@ -78,21 +78,27 @@ RSpec.describe SnackService do
     end
   end
 
-  describe '#top_rated_savory_snacks' do
+  describe '#top_rated_savory_or_sweet_snacks' do
     it 'returns the top rated savory snacks' do
       stub_body = File.open('spec/fixtures/top_rated_savory_snacks.json')
 
-      top_rated_savory_snacks = SnackService.top_rated_savory_or_sweet('savory')
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks/top_rated_savory_or_sweet_snacks?limit=5&taste=savory")
+        .to_return(status: 200, body: stub_body, headers: {})
 
-      expect(top_rated_savory_or_sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
+      top_rated_savory_snacks = SnackService.top_rated_savory_or_sweet_snacks('savory')
+
+      expect(top_rated_savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
     end
 
     it 'returns the top rated sweet snacks' do
       stub_body = File.open('spec/fixtures/top_rated_sweet_snacks.json')
 
-      top_rated_savory_snacks = SnackService.top_rated_savory_or_sweet('sweet')
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks/top_rated_savory_or_sweet_snacks?limit=5&taste=sweet")
+        .to_return(status: 200, body: stub_body, headers: {})
 
-      expect(top_rated_savory_or_sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Honey Bun')
+      top_rated_sweet_snacks = SnackService.top_rated_savory_or_sweet_snacks('sweet')
+
+      expect(top_rated_sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Honey Bun')
     end
   end
 end
