@@ -31,6 +31,9 @@ RSpec.describe SnackService do
     it 'returns all savory snacks' do
       stub_body = File.open('spec/fixtures/savory_snacks.json')
 
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks/get_all_savory_or_sweet_snacks?limit=5&taste=savory")
+        .to_return(status: 200, body: stub_body, headers: {})
+
       savory_snacks = SnackService.get_all_savory_or_sweet_snacks('savory')
 
       expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Funyuns')
@@ -39,9 +42,12 @@ RSpec.describe SnackService do
     it 'returns all sweet snacks' do
       stub_body = File.open('spec/fixtures/sweet_snacks.json')
 
-      savory_snacks = SnackService.get_all_savory_or_sweet_snacks('sweet')
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks/get_all_savory_or_sweet_snacks?limit=5&taste=sweet")
+        .to_return(status: 200, body: stub_body, headers: {})
 
-      expect(savory_snacks[:data][:attributes][:snacks][0][:name]).to eq('Star Crunch')
+      sweet_snacks = SnackService.get_all_savory_or_sweet_snacks('sweet')
+
+      expect(sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Star Crunch')
     end
   end
 end
