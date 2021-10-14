@@ -15,7 +15,7 @@ RSpec.describe User do
 
   describe '#initialize' do
     it 'exists' do
-      expect(user).to be_an_instance_of(User)
+      expect(@user).to be_an_instance_of(User)
     end
 
     it 'has attributes' do

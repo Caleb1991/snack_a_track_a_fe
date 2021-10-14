@@ -11,6 +11,11 @@ RSpec.describe UserFacade do
       users_array = UserFacade.create_user_objects
 
       expect(users_array).to be_an_instance_of(Array)
+      expect(users_array[0].id).to eq(1)
+      expect(users_array[0].first_name).to eq('Roald')
+      expect(users_array[0].last_name).to eq('Roaldington')
+      expect(users_array[0].email).to eq('RoaldRules91@Gmail.Com')
+      expect(users_array[0].username).to eq('Roald1991')
     end
   end
 end
