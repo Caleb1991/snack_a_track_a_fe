@@ -31,7 +31,7 @@ RSpec.describe UserServices do
     it 'returns all of a given users snacks' do
       stub_body = File.open('spec/fixtures/users_snacks.json')
 
-      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/")
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks")
          .to_return(status: 200, body: stub_body, headers: {})
 
       snacks = UserServices.get_users_snacks(1)
