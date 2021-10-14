@@ -18,9 +18,15 @@ class UserServices
   end
 
   def self.get_users_top_rated_snacks(user_id, limit = 5)
-    response = conn.get("/api/v1/users/:user_id/snacks/users_top_rated_snacks") do |req|
+    response = conn.get("/api/v1/users/#{user_id}/snacks/users_top_rated_snacks") do |req|
       req.params['limit'] = limit
     end
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.get_user_snack_recommendations(user_id)
+    response = conn.get("/api/v1/users/#{user_id}/snacks/snack_recommendations")
 
     JSON.parse(response.body, symbolize_names: true)
   end
