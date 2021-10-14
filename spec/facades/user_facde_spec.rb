@@ -24,6 +24,9 @@ RSpec.describe UserFacade do
     it 'creates a single user object' do
       stub_body = File.open('spec/fixtures/single_user.json')
 
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1")
+        .to_return(status: 200, body: stub_body, headers: {})
+
       single_user = UserFacade.create_single_user_object(1)
 
       expect(single_user).to be_an_instance_of(User)

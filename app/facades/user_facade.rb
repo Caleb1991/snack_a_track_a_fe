@@ -6,4 +6,10 @@ class UserFacade
       User.new(user_attributes)
     end
   end
+
+  def self.create_single_user_object(user_id)
+    user_attributes = UserService.get_single_user(user_id)
+
+    User.new(user_attributes[:data][:attributes])
+  end
 end
