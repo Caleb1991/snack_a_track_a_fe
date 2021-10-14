@@ -1,0 +1,30 @@
+{
+    "data": {
+        "id": null,
+        "type": "Snack",
+        "attributes": {
+            "snacks": [
+                {
+                    "id": 3,
+                    "name": "Honey Bun",
+                    "description": "Honey and Bun-y",
+                    "savory": false,
+                    "sweet": true,
+                    "created_at": "2021-10-14T02:57:59.577Z",
+                    "updated_at": "2021-10-14T02:57:59.577Z",
+                    "average_rating": 3.85
+                },
+                {
+                    "id": 2,
+                    "name": "Star Crunch",
+                    "description": "Made with nougat..... I think?",
+                    "savory": false,
+                    "sweet": true,
+                    "created_at": "2021-10-14T02:57:59.570Z",
+                    "updated_at": "2021-10-14T02:57:59.570Z",
+                    "average_rating": 3.8
+                }
+            ]
+        }
+    }
+}

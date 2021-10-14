@@ -77,4 +77,22 @@ RSpec.describe SnackService do
       expect(top_rated_snacks[:data][:attributes][:top_rated_snacks][0][:name]).to eq('Cheetos')
     end
   end
+
+  describe '#top_rated_savory_snacks' do
+    it 'returns the top rated savory snacks' do
+      stub_body = File.open('spec/fixtures/top_rated_savory_snacks.json')
+
+      top_rated_savory_snacks = SnackService.top_rated_savory_or_sweet('savory')
+
+      expect(top_rated_savory_or_sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
+    end
+
+    it 'returns the top rated sweet snacks' do
+      stub_body = File.open('spec/fixtures/top_rated_sweet_snacks.json')
+
+      top_rated_savory_snacks = SnackService.top_rated_savory_or_sweet('sweet')
+
+      expect(top_rated_savory_or_sweet_snacks[:data][:attributes][:snacks][0][:name]).to eq('Honey Bun')
+    end
+  end
 end
