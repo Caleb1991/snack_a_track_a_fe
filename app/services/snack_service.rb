@@ -20,6 +20,12 @@ class SnackService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.average_rating(snack_id)
+    response = conn.get("/api/v1/snacks/#{snack_id}/average_rating")
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def self.conn
     Faraday.new(url: 'https://lit-reaches-91268.herokuapp.com/')
   end
