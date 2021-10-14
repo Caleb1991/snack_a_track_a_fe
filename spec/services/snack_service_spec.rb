@@ -63,4 +63,14 @@ RSpec.describe SnackService do
       expect(average_rating[:data][:attributes][:average_rating]).to eq(2.76666666666667)
     end
   end
+
+  describe '#top_rated_snacks_overall' do
+    it 'returns the top rated snacks overall' do
+      stub_body = File.open('spec/fixtures/top_rated_snacks_overall.json')
+
+      top_rated_snacks = SnackService.top_rated_snacks_overall
+
+      expect(top_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
+    end
+  end
 end
