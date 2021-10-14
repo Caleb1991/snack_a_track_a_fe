@@ -52,4 +52,17 @@ RSpec.describe UserServices do
       expect(top_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
     end
   end
+
+  describe '#get_user_snack_recommendations' do
+    it 'returns snack recommendations for a given user' do
+      stub_body = File.open("spec/fixtures/user_snack_recs.json")
+
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/snack_recommendations")
+        .to_return(status: 200, body: stub_body, headers: {})
+
+      snack_recs = UserServices.get_user_snack_recommendations(1)
+
+      expect(snack_recs[:data][:attributes][:snacks][0][:name]).to eq('Broccoli')
+    end
+  end
 end
