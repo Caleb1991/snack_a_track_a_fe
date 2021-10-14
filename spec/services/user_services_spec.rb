@@ -23,7 +23,7 @@ RSpec.describe UserServices do
 
       single_user = UserServices.get_single_user(1)
 
-      expect(single_user[:data][:attributes][:user][:name]).to eq('Roald')
+      expect(single_user[:data][:attributes][:first_name]).to eq('Roald')
     end
   end
 end
