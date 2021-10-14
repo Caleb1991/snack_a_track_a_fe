@@ -1,0 +1,55 @@
+{
+    "data": {
+        "id": 1,
+        "type": "user's Snacks",
+        "attributes": {
+            "snacks": [
+                {
+                    "id": 5,
+                    "name": "Cheetos",
+                    "description": "The one with the cheetah",
+                    "savory": true,
+                    "sweet": false,
+                    "created_at": "2021-10-14T02:57:59.597Z",
+                    "updated_at": "2021-10-14T02:57:59.597Z"
+                },
+                {
+                    "id": 4,
+                    "name": "Doritos",
+                    "description": "Bold",
+                    "savory": true,
+                    "sweet": false,
+                    "created_at": "2021-10-14T02:57:59.589Z",
+                    "updated_at": "2021-10-14T02:57:59.589Z"
+                },
+                {
+                    "id": 3,
+                    "name": "Honey Bun",
+                    "description": "Honey and Bun-y",
+                    "savory": false,
+                    "sweet": true,
+                    "created_at": "2021-10-14T02:57:59.577Z",
+                    "updated_at": "2021-10-14T02:57:59.577Z"
+                },
+                {
+                    "id": 2,
+                    "name": "Star Crunch",
+                    "description": "Made with nougat..... I think?",
+                    "savory": false,
+                    "sweet": true,
+                    "created_at": "2021-10-14T02:57:59.570Z",
+                    "updated_at": "2021-10-14T02:57:59.570Z"
+                },
+                {
+                    "id": 1,
+                    "name": "Funyuns",
+                    "description": "Oniony",
+                    "savory": true,
+                    "sweet": false,
+                    "created_at": "2021-10-14T02:57:59.563Z",
+                    "updated_at": "2021-10-14T02:57:59.563Z"
+                }
+            ]
+        }
+    }
+}
