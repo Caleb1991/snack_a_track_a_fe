@@ -26,6 +26,14 @@ class SnackService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.top_rated_snacks_overall(limit = 5)
+    response = conn.get('/api/v1/snacks/top_rated_snacks_overall') do |req|
+      req.params['limit'] = limit
+    end
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def self.conn
     Faraday.new(url: 'https://lit-reaches-91268.herokuapp.com/')
   end

@@ -68,9 +68,13 @@ RSpec.describe SnackService do
     it 'returns the top rated snacks overall' do
       stub_body = File.open('spec/fixtures/top_rated_snacks_overall.json')
 
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks/top_rated_snacks_overall?limit=5")
+        .to_return(status: 200, body: stub_body, headers: {})
+
+
       top_rated_snacks = SnackService.top_rated_snacks_overall
 
-      expect(top_rated_snacks[:data][:attributes][:snacks][0][:name]).to eq('Cheetos')
+      expect(top_rated_snacks[:data][:attributes][:top_rated_snacks][0][:name]).to eq('Cheetos')
     end
   end
 end
