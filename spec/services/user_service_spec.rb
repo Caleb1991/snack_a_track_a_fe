@@ -65,4 +65,22 @@ RSpec.describe UserService do
       expect(snack_recs[:data][:attributes][:snacks][0][:name]).to eq('Broccoli')
     end
   end
+
+  describe '#create_a_user' do
+    it 'creates a user' do
+      WebMock.disable!
+      user_params = {
+        username: 'Gato1132',
+        first_name: 'Gato',
+        last_name: 'Gatoington',
+        email: 'CatsRule1@Gmail.Com',
+        password: 'Password1',
+        password_confrimation: 'Password1'
+      }
+
+      created_user = UserService.create_user(user_params)
+
+      expect(created_user[:data][:attributes][:username]).to eq('Gato')
+    end
+  end
 end
