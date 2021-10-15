@@ -68,19 +68,23 @@ RSpec.describe UserService do
 
   describe '#create_a_user' do
     it 'creates a user' do
-      WebMock.disable!
       user_params = {
-        username: 'Gato1132',
+        username: 'Gao113211',
         first_name: 'Gato',
         last_name: 'Gatoington',
         email: 'CatsRule1@Gmail.Com',
         password: 'Password1',
-        password_confrimation: 'Password1'
+        password_confirmation: 'Password1'
       }
+
+      stub_body = File.open('spec/fixtures/create_user.json')
+
+      stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
+        .to_return(status: 200, body: stub_body, headers: {})
 
       created_user = UserService.create_user(user_params)
 
-      expect(created_user[:data][:attributes][:username]).to eq('Gato')
+      expect(created_user[:data][:attributes][:username]).to eq('Gao113211')
     end
   end
 end
