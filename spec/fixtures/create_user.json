@@ -1,0 +1,12 @@
+{
+    "data": {
+        "id": 7,
+        "type": "User",
+        "attributes": {
+            "username": "Gao113211",
+            "first_name": "Gato",
+            "last_name": "Gatoington",
+            "email": "CatsRule1@Gmail.Com"
+        }
+    }
+}
