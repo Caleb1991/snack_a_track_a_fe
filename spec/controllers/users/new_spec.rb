@@ -28,10 +28,14 @@ RSpec.describe 'Welcome register page' do
     fill_in :password, with: 'test'
     fill_in :password_confirmation, with: 'test'
 
-    stub_body = File.open('spec/fixtures/second_created_user.json')
+    create_stub_body = File.open('spec/fixtures/second_created_user.json')
+    user_page_stub_body = File.open('spec/fixtures/lando11.json')
+
+    stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/14")
+      .to_return(status: 200, body: user_page_stub_body, headers: {})
 
     stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
-      .to_return(status: 200, body: stub_body, headers: {})
+      .to_return(status: 200, body: create_stub_body, headers: {})
 
     click_on 'Create User'
 

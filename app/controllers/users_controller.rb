@@ -21,4 +21,8 @@ class UsersController < ApplicationController
       flash.alert = @user
     end
   end
+
+  def show
+    @user = UserFacade.create_single_user_object(params[:id])
+  end
 end
