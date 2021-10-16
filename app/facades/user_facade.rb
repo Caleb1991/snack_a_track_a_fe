@@ -12,4 +12,15 @@ class UserFacade
 
     User.new(user_attributes[:data][:attributes])
   end
+
+  def self.log_in_user(user_parameters)
+    user_login = UserService.log_user_in(user_parameters)
+    success_message = "You have successfully logged in!"
+
+    if user_login[:data][:attributes][:message] == success_message
+      {logged_in: true, id: user_login[:data][:id]}
+    else
+      {logged_in: false}
+    end
+  end
 end

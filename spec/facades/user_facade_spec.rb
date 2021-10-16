@@ -37,4 +37,22 @@ RSpec.describe UserFacade do
       expect(single_user.username).to eq('Roald1991')
     end
   end
+
+  describe '#login_user' do
+    it 'logs a user in' do    
+      user_parameters = {
+        username: 'Gao113211',
+        password: 'Password1'
+      }
+
+      stub_body = File.open('spec/fixtures/user_login.json')
+
+      stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/sessions")
+        .to_return(status: 200, body: stub_body, headers: {})
+
+      logged_in_user = UserFacade.log_in_user(user_parameters)
+
+      expect(logged_in_user[:logged_in]).to eq(true)
+    end
+  end
 end
