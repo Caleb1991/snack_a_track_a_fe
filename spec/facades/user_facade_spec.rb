@@ -61,7 +61,6 @@ RSpec.describe UserFacade do
       user_parameters = {
         username: 'Gao113211',
         first_name: 'Gato',
-        last_name: 'Gatoington',
         email: 'CatsRule1@Gmail.com',
         password: 'test',
         password_confirmation: 'test'
@@ -69,9 +68,32 @@ RSpec.describe UserFacade do
 
       stub_body = File.open('spec/fixtures/create_user.json')
 
+      stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
+        .to_return(status: 200, body: stub_body, headers: {})
+
       user = UserFacade.register_user(user_parameters)
 
       expect(user.username).to eq('Gao113211')
+    end
+
+    it 'returns errors' do
+      user_parameters = {
+        username: 'Gao113211',
+        first_name: 'Gato',
+        email: 'CatsRule1@Gmail.com',
+        password: 'test',
+        password_confirmation: 'test'
+      }
+
+      stub_body = File.open('spec/fixtures/register_user_errors.json')
+
+      stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
+        .to_return(status: 200, body: stub_body, headers: {})
+
+
+      user = UserFacade.register_user(user_parameters)
+
+      expect(user).to eq(["Username has already been taken", "Last name can't be blank"])
     end
   end
 end
