@@ -39,6 +39,14 @@ class UserService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def self.log_user_in(user_credentials)
+    response = conn.post('/api/v1/sessions') do |req|
+      req.body = user_credentials.to_json
+    end
+
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   def self.conn
     Faraday.new(url: 'https://lit-reaches-91268.herokuapp.com/')
   end

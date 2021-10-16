@@ -87,4 +87,38 @@ RSpec.describe UserService do
       expect(created_user[:data][:attributes][:username]).to eq('Gao113211')
     end
   end
+
+  describe '#log_user_in' do
+    it 'logs a user in' do
+      user_params = {
+        username: 'Gao113211',
+        first_name: 'Gato',
+        last_name: 'Gatoington',
+        email: 'CatsRule1@Gmail.Com',
+        password: 'Password1',
+        password_confirmation: 'Password1'
+      }
+
+      create_user_stub_body = File.open('spec/fixtures/create_user.json')
+
+      stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
+        .to_return(status: 200, body: create_user_stub_body, headers: {})
+
+      created_user = UserService.create_user(user_params)
+
+      user_credentials = {
+        username: 'Gao113211',
+        password: 'password1'
+      }
+
+      log_in_user_stub_body = File.open('spec/fixtures/user_login.json')
+
+      stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/sessions")
+        .to_return(status: 200, body: log_in_user_stub_body, headers: {})
+
+      user_login = UserService.log_user_in(user_credentials)
+
+      expect(user_login[:data][:attributes][:message]).to eq('You have successfully logged in!')
+    end
+  end
 end
