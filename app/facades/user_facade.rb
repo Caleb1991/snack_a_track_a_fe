@@ -23,4 +23,14 @@ class UserFacade
       {logged_in: false}
     end
   end
+
+  def self.register_user(user_parameters)
+    user = UserService.create_user(user_parameters)
+
+    if user[:data][:id] != nil
+      User.new(user[:data][:attributes])
+    else
+      user[:data][:attributes][:errors]
+    end
+  end
 end

@@ -1,0 +1,12 @@
+{
+    "data": {
+        "id": null,
+        "type": "User Errors",
+        "attributes": {
+            "errors": [
+                "Username has already been taken",
+                "Last name can't be blank"
+            ]
+        }
+    }
+}
