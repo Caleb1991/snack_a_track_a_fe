@@ -37,4 +37,18 @@ RSpec.describe UserFacade do
       expect(single_user.username).to eq('Roald1991')
     end
   end
+
+  describe '#login_user' do
+    it 'logs a user in' do
+      user_parameters = {
+        username: 'Gao113211',
+        password: 'Password1'
+      }
+
+      logged_in_user = UserFacade.log_in_user(user_parameters)
+
+      expect(logged_in_user).to eq(4)
+      expect(session[:user_id]).to eq(4)
+    end
+  end
 end
