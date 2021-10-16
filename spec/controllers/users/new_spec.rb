@@ -6,7 +6,7 @@ RSpec.describe 'Welcome register page' do
 
     click_on 'Register'
 
-    expect(current_path).to eq('/welcome/register')
+    expect(current_path).to eq('/users/new')
 
     expect(page).to have_field(:username)
     expect(page).to have_field(:first_name)
