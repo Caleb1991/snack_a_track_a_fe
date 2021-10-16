@@ -21,15 +21,20 @@ RSpec.describe 'Welcome register page' do
 
     click_on 'Register'
 
-    fill_in :username, with: 'Luke11'
-    fill_in :first_name, with: 'Luke'
-    fill_in :last_name, with: 'Lukeington'
-    fill_in :email, with: 'Luke@gmail.com'
+    fill_in :username, with: 'Lando11'
+    fill_in :first_name, with: 'Lando'
+    fill_in :last_name, with: 'Landoington'
+    fill_in :email, with: 'Lando1@gmail.com'
     fill_in :password, with: 'test'
     fill_in :password_confirmation, with: 'test'
 
+    stub_body = File.open('spec/fixtures/second_created_user.json')
+
+    stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/users")
+      .to_return(status: 200, body: stub_body, headers: {})
+
     click_on 'Create User'
 
-    expect(current_path).to eq('/users/11')
+    expect(current_path).to eq('/users/14')
   end
 end

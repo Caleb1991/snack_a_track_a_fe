@@ -1,0 +1,13 @@
+{
+    "data": {
+        "id": 14,
+        "type": "User",
+        "attributes": {
+            "id": 14,
+            "username": "Lando11",
+            "first_name": "Lando",
+            "last_name": "Landoington",
+            "email": "Lando1@Gmail.Com"
+        }
+    }
+}
