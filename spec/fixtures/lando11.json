@@ -1,0 +1,16 @@
+{
+    "data": {
+        "id": 14,
+        "type": "User",
+        "attributes": {
+            "id": 14,
+            "username": "Lando11",
+            "first_name": "Lando",
+            "last_name": "Landoington",
+            "email": "Lando1@Gmail.Com",
+            "password_digest": "$2a$12$CDY2SuCDqaBLI2y6c7SeTOrRsCVeIKYsqcjW5gX.oHEJF0RyCfT6G",
+            "created_at": "2021-10-16T20:50:04.380Z",
+            "updated_at": "2021-10-16T20:50:04.380Z"
+        }
+    }
+}
