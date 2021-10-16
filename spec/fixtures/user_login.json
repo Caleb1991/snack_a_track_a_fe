@@ -1,0 +1,9 @@
+{
+    "data": {
+        "id": 4,
+        "type": "User",
+        "attributes": {
+            "message": "You have successfully logged in!"
+        }
+    }
+}
