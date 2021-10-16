@@ -15,9 +15,12 @@ class UserFacade
 
   def self.log_in_user(user_parameters)
     user_login = UserService.log_user_in(user_parameters)
-
     success_message = "You have successfully logged in!"
 
-    user_login[:data][:attributes][:message] == success_message
+    if user_login[:data][:attributes][:message] == success_message
+      {logged_in: true, id: user_login[:data][:id]}
+    else
+      {logged_in: false}
+    end
   end
 end

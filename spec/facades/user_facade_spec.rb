@@ -39,7 +39,7 @@ RSpec.describe UserFacade do
   end
 
   describe '#login_user' do
-    it 'logs a user in' do
+    it 'logs a user in' do    
       user_parameters = {
         username: 'Gao113211',
         password: 'Password1'
@@ -52,7 +52,7 @@ RSpec.describe UserFacade do
 
       logged_in_user = UserFacade.log_in_user(user_parameters)
 
-      expect(logged_in_user).to eq(true)
+      expect(logged_in_user[:logged_in]).to eq(true)
     end
   end
 end

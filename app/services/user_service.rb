@@ -48,6 +48,6 @@ class UserService
   end
 
   def self.conn
-    Faraday.new(url: 'https://lit-reaches-91268.herokuapp.com/')
+    Faraday.new(url: 'https://lit-reaches-91268.herokuapp.com')
   end
 end
