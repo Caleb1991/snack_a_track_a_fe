@@ -98,7 +98,7 @@ RSpec.describe UserFacade do
   end
 
   describe '#top_snacks' do
-    it 'returns  users top rated snacks' do
+    it 'returns users top rated snacks' do
       stub_body = File.open('spec/fixtures/top_rated_users_snacks.json')
 
       stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/users_top_rated_snacks?limit=5")

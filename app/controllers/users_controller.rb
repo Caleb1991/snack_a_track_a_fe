@@ -24,5 +24,6 @@ class UsersController < ApplicationController
 
   def show
     @user = UserFacade.create_single_user_object(params[:id])
+    @top_snacks = UserFacade.top_snacks(params[:id])
   end
 end

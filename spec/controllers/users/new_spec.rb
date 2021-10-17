@@ -30,6 +30,10 @@ RSpec.describe 'Welcome register page' do
 
     create_stub_body = File.open('spec/fixtures/second_created_user.json')
     user_page_stub_body = File.open('spec/fixtures/lando11.json')
+    top_snacks_stub_body = File.open('spec/fixtures/top_rated_users_snacks.json')
+
+    stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/14/snacks/users_top_rated_snacks?limit=5")
+      .to_return(status: 200, body: top_snacks_stub_body, headers: {})
 
     stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/14")
       .to_return(status: 200, body: user_page_stub_body, headers: {})
