@@ -23,4 +23,12 @@ RSpec.describe 'User Show Page' do
     expect(current_path).to eq('/users/4')
     expect(page).to have_content('Welcome, Gao113211!')
   end
+
+  it 'has a users first five top rated snacks' do
+    expect(page).to have_content('Cheetos')
+    expect(page).to have_content('Doritos')
+    expect(page).to have_content('Honey Bun')
+    expect(page).to have_content('Star Crunch')
+    expect(page).to have_content('Funyuns')
+  end
 end
