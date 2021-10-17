@@ -1,7 +1,11 @@
 <h1>Hope you're hungry, <%= @user.username %>!</h1>
 
 <h3>Your top rated snacks:</h3>
-<% @top_snacks.each do |snack| %>
-<h5><%= snack.name %></h5>
-<p>Description: <%= snack.description %></p>
+<% if @top_snacks.count > 0 %>
+  <% @top_snacks.each do |snack| %>
+  <h5><%= snack.name %></h5>
+  <p>Description: <%= snack.description %></p>
+  <% end %>
+<% else %>
+  <p>You haven't rated any snacks yet, get snacking!</p>
 <% end %>

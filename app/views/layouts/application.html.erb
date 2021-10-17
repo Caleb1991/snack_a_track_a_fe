@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if session[:user_id] != nil %>
+      <%= link_to 'Log Out', "/sessions/#{session[:user_id]}", method: :delete %>
+    <% end %>
     <% flash.each do |type, msg| %>
       <div>
         <%= msg %>
