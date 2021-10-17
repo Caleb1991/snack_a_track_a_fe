@@ -35,4 +35,12 @@ RSpec.describe 'User Show Page' do
     expect(page).to have_content('Star Crunch')
     expect(page).to have_content('Funyuns')
   end
+
+  it 'can log a user out' do
+    expect(page).to have_link('Log Out')
+
+    click_on 'Log Out'
+
+    expect(current_path).to eq('/welcome')
+  end
 end
