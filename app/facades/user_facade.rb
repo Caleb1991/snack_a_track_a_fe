@@ -33,4 +33,13 @@ class UserFacade
       user[:data][:attributes][:errors]
     end
   end
+
+  def self.top_snacks(user_id, limit = 5)
+    snack_attributes = UserService.get_users_top_rated_snacks(user_id, limit)
+
+    snack_attributes[:data][:attributes][:snacks].map do |attributes|
+      Snack.new(attributes)
+    end
+  end
+
 end

@@ -96,4 +96,23 @@ RSpec.describe UserFacade do
       expect(user).to eq(["Username has already been taken", "Last name can't be blank"])
     end
   end
+
+  describe '#top_snacks' do
+    it 'returns users top rated snacks' do
+      stub_body = File.open('spec/fixtures/top_rated_users_snacks.json')
+
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/1/snacks/users_top_rated_snacks?limit=5")
+        .to_return(status: 200, body: stub_body, headers: {})
+
+      snacks = UserFacade.top_snacks(1, 5)
+
+      expect(snacks).to be_an(Array)
+      expect(snacks.count).to eq(5)
+      expect(snacks[0].name).to eq('Cheetos')
+      expect(snacks[1].name).to eq('Doritos')
+      expect(snacks[2].name).to eq('Honey Bun')
+      expect(snacks[3].name).to eq('Star Crunch')
+      expect(snacks[4].name).to eq('Funyuns')
+    end
+  end
 end

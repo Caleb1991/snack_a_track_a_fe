@@ -5,11 +5,15 @@ RSpec.describe 'Sessions Controller' do
     it 'logs a user in' do
       login_stub_body = File.open('spec/fixtures/user_login.json')
       user_page_stub_body = File.open('spec/fixtures/gao113211.json')
+      top_snacks_stub_body = File.open('spec/fixtures/top_rated_users_snacks.json')
 
       visit '/welcome'
 
       fill_in :username, with: 'Gao113211'
       fill_in :password, with: 'Password1'
+
+      stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/4/snacks/users_top_rated_snacks?limit=5")
+        .to_return(status: 200, body: top_snacks_stub_body, headers: {})
 
       stub_request(:post, "https://lit-reaches-91268.herokuapp.com/api/v1/sessions")
         .to_return(status: 200, body: login_stub_body, headers: {})
