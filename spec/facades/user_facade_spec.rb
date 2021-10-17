@@ -111,4 +111,5 @@ RSpec.describe UserFacade do
       expet(snacks[3].name).to eq('Star Crunch')
       expet(snacks[4].name).to eq('Funyuns')
     end
+  end
 end
