@@ -5,11 +5,15 @@ RSpec.describe 'User Show Page' do
     login_stub_body = File.open('spec/fixtures/user_login.json')
     user_page_stub_body = File.open('spec/fixtures/gao113211.json')
     top_snacks_stub_body = File.open('spec/fixtures/top_rated_users_snacks.json')
+    snack_stub_body = File.open('spec/fixtures/all_snacks.json')
 
     visit '/welcome'
 
     fill_in :username, with: 'Gao113211'
     fill_in :password, with: 'Password1'
+
+    stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/snacks")
+      .to_return(status: 200, body: snack_stub_body, headers: {})
 
     stub_request(:get, "https://lit-reaches-91268.herokuapp.com/api/v1/users/4")
       .to_return(status: 200, body: user_page_stub_body, headers: {})
@@ -42,5 +46,11 @@ RSpec.describe 'User Show Page' do
     click_on 'Log Out'
 
     expect(current_path).to eq('/welcome')
+  end
+
+  it 'has a link to snacks index' do
+    click_on 'Explore Snacks'
+
+    expect(current_path).to eq('/snacks')
   end
 end

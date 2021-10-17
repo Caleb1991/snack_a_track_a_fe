@@ -1,0 +1,7 @@
+<h1>Get Snackin'!</h1>
+<% @snacks.each do |snack| %>
+  <h1><%= snack.name %></h1>
+  <p><%= snack.description %></p>
+  <p>Savory: <%= snack.savory %></p>
+  <p>Sweet: <%= snack.sweet %></p>
+<% end %>
