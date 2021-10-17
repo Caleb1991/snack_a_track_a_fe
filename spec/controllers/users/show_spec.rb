@@ -43,4 +43,10 @@ RSpec.describe 'User Show Page' do
 
     expect(current_path).to eq('/welcome')
   end
+
+  it 'has a link to snacks index' do
+    click_on 'Explore Snacks'
+
+    expect(current_path).to eq('/snacks')
+  end
 end
